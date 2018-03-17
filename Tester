@@ -1,0 +1,58 @@
+
+package tester;
+
+import javax.swing.JOptionPane;
+
+public class Tester 
+{
+
+    public static void main(String[] args) 
+    {
+        String vote;
+        vote = " ";
+        int wymanSum = 0;
+        int marySum = 0;
+        int suzSum = 0;
+        int count = 1;
+        
+        while (count <= 31)
+        {
+            Object[] options = { "Mr. Wyman", "Sr. Mary", "Suze E Que", "End "
+                    + "Voting" };
+            int input = JOptionPane.showOptionDialog(null, "Voter #" + 
+                    count + "\nWho would you like to vote for?", vote, 0, 
+                    JOptionPane.QUESTION_MESSAGE, null, options, null);
+            if (input == 0)
+                wymanSum++;
+            if (input == 1)
+                marySum++;
+            if (input == 2)
+                suzSum++;
+            if (input == 3)
+                count += 32; 
+            count++;
+        }
+        
+        if (wymanSum == marySum && wymanSum == suzSum)
+            JOptionPane.showMessageDialog(null,"It's a three-way tie!");
+        else if (wymanSum > marySum && wymanSum > suzSum)
+            JOptionPane.showMessageDialog(null,"Mr. Wyman is the winner!");
+                else if (wymanSum == marySum && wymanSum > 0)
+            JOptionPane.showMessageDialog(null, "It's a tie between Mr. Wyman "
+                    + "and Sister Mary!");
+        else if (marySum > suzSum)
+            JOptionPane.showMessageDialog(null,"Sister Mary is the winner!");
+        else if (suzSum > marySum)
+            JOptionPane.showMessageDialog(null,"Suze E Queue is the winner!");
+        else if (wymanSum == suzSum && wymanSum > 0)
+            JOptionPane.showMessageDialog(null,"It's a tie between Mr. Wyman "
+                    + "and Suze E Queue");
+        else if (suzSum == marySum && suzSum > 0)
+            JOptionPane.showMessageDialog(null, "It's a tie between Suze E "
+                    + "Queue and Sister Mary!");
+        else 
+            JOptionPane.showMessageDialog(null, "No votes have been cast.");
+
+    }
+    
+}
